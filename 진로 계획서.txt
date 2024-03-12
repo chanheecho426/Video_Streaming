@@ -1,0 +1,72 @@
+디지털 탄소발자국
+
+A.K.A.
+그린 컴퓨팅
+지속가능한 컴퓨팅
+
+
+-서버사이드
+->데이터센터,AI,GPU 사용,암호화페,자주차
+->정수종 교수,데이터 센터의 전력 소모가 가장 중요하다!!!!
+->서버 냉각에 탄소가 많이 쓰인댑니다.
+
+-클라이언트사이드
+->이메일 삭제 앱 제작, v2까지 제작함
+-v3제작
+->인터넷 검색,유튜브 시청,전화통화, 데이터 사용
+->그린웨일,밝기조절 절전모드
+->스트리밍보다는 직접 내려받기
+
+데이터센터
+-컴퓨팅
+-스토리지
+-네트워크
+ 서버 온도 낮춰놓고 돌려서 전력이 줄었어요!
+
+서버 가상화 비교 실험: 서버를 가상화하여 여러 가상 머신을 하나의 물리적 서버에서 실행하는 것이 전체적인 디지털 탄소발자국을 줄일 수 있는지 비교해볼 수 있습니다. 서로 다른 가상화 기술을 사용하고 가상 머신 수를 조절하여 에너지 소비 및 탄소 발자국의 차이를 분석할 수 있습니다.
+
+클라우드 컴퓨팅 탄소 발자국 측정: 여러 클라우드 서비스 제공업체의 데이터 센터에서의 탄소 발자국을 측정하고 비교할 수 있습니다. Amazon Web Services, Microsoft Azure, Google Cloud Platform 등 각 클라우드 제공업체의 탄소 발자국과 사용자가 서비스를 사용함에 따른 영향을 분석하여 가장 친환경적인 옵션을 식별할 수 있습니다.
+
+디지털 서비스 사용에 따른 에너지 소비 비교: 동일한 작업을 수행하는 서로 다른 디지털 서비스(예: 비디오 스트리밍, 파일 공유, 웹 검색 등)를 사용할 때의 에너지 소비 및 탄소 발자국을 측정할 수 있습니다. 예를 들어, YouTube와 Netflix를 비교하여 동일한 비디오를 스트리밍할 때의 에너지 소비를 측정하여 가장 효율적인 서비스를 찾을 수 있습니다.
+
+디지털 제품 수명주기 분석: 디지털 제품의 제조, 운영 및 폐기에 따른 탄소 발자국을 분석하여 수명주기 전반에 걸친 영향을 이해할 수 있습니다. 예를 들어, 스마트폰이나 노트북의 생산, 사용 및 폐기 과정에서 발생하는 탄소 발자국을 비교하여 제품의 수명 연장이 환경에 미치는 영향을 조사할 수 있습니다.
+
+이러한 실험을 통해 디지털 기술이 환경에 미치는 영향을 이해하고 개선할 수 있는 방안을 모색할 수 있습니다.
+
+서버 온도가 전력량이나 효율에 얼마나 영향을 미칠까, 알고리즘은?
+
+
+
+디도스를 방어하는게 데이터 안정성 말고도 서버 전력량 절약이 도움이 얼마나 될까?
+
+분탕을 치는게 서버 전력량을 얼마나 늘릴까?
+
+*최종*
+디지털 서비스 사용에 따른 에너지 소비 비교: 동일한 작업을 수행하는 서로 다른 디지털 서비스(예: 비디오 스트리밍, 파일 공유, 웹 검색 등)를 사용할 때의 에너지 소비 및 탄소 발자국을 측정할 수 있습니다. 예를 들어, YouTube와 Netflix를 비교하여 동일한 비디오를 스트리밍할 때의 에너지 소비를 측정하여 가장 효율적인 서비스를 찾을 수 있습니다.
+
+다운로드가 불가할 경우 동영상 화질을 한 단계 낮추는 것만으로도 소비되는 전력의 30%를 줄일 수 있다. 
+
+또한 영상을 시청할 때 태블릿PC나 TV보다 스마트폰 같은 작은 기기를 사용하는 것도 전력 사용량을 줄일 수 있는 방법이다.
+https://javafa.gitbooks.io/nodejs_server_basic/content/chapter11.html
+
+1.전선에 보내지는 데이터(완료)
+2.서버 부하(평균적인 모델을 사용)(이 평균모델을 확인해야함 ㅅㅂ)
+3.데이터센터에서 사용되는 에너지 종류(생략)C = E x 442 g/kWh (or alternative/region-specific carbon factor) 으로 계산
+
+I've worked as an architect on the largest transit ISP backbones, both as an operator and as an equipment manufacturer. I'm interpreting "work" as classical electrical power (watts).
+
+There are two broad classes of power consumption in network equipment (both switching/"routing" and optical transmission). The first is passive power. This is what's needed to keep the lights on: the transmission lasers themselves, the baseband modulation, the keepalive frames, power conversion losses, fans, the routing protocols and monitoring software, etc.. This is the amount of power consumed (work performed) even when there are no customer packets on the network whatsoever. And it is a very high amount of power. It's so high because all of the circuits, all of the silicon in the systems is powered and contributing to transistor gate leakage current, which relative to number of gates is going up with every new Si process (e.g. worse at 22 nm than at 90 nm). The second class of power consumption is active power, which is the extra power consumed by switching transistors on and off, and which goes up as the packet processing load on the devices increases. This is also very high, but anecdotally, may in many cases only contribute 20% of the total power (e.g. zero packets per second is 80% of max, and line-rate PPS is 100%). As another commenter said, it would be obtuse to look only at the active power; the network was built at great expense expressly to deliver your packet. I'll consider both.
+
+The total power consumed per unit of packet forwarding capacity has consistently decreased since the beginning of the Internet, thanks to Moore's Law. The discussion about copper vs. fiber is mostly irrelevant, since today copper is only used for the last mile (e.g. DOCSIS over coax or ADSL over UTP) or in the datacenter where the packets originate (again not a great distance). The specification for total power per unit of full-duplex capacity on a router product that was just introduced in December, 2015 is 0.3 W/Gb/s (that's passive and active power at 100% load, using very recent silicon from Broadcom). The Internet at large is made up of older generations of silicon/equipment, plus lots of stuff on the edge that's not as efficient, so let's multiply that by 10 (more than three Moore's Law generations) to average it out and assume it's 3 W/Gb/s globally. Note this is per "hop." You can use a full-duplex spec as the cost to transit one hop, because you're going into one port and out of another (same as two packets ingress/egress on the same FDX port). The other contributor to power is the optical transmission system. Usually the total contribution to power from these systems is less than that from the switching layer, so let's say it's 2/5 and round up to 5 W/Gb/s.
+
+Hop counts calculated by others are mostly correct. A dozen or so is typical. Not all hops have the same power consumption profile, because some are core equipment at massive scale that efficiently do 0.5 W/Gb/s or better, while other hops are access network equipment at smaller scale (per device) that may do 15W/Gb/s or worse. Ok, 5 W/Gb/s, and 12 hops. Let's say that your access modem or ONT plus home router adds another 10W/Gb and take it up to 15 W/Gb/s.
+
+But how many "packets" in a gigabit? We have something called IMIX, which is nothing more than a real-life traffic profile. There is no single IMIX, because it depends on what applications the users of a particular ISP use the most. Video applications send a lot of packets at the MTU (1500 bytes path MTU for almost all Internet conversations), with a lot of GETs (HTTP) and ACKs (TCP) sprayed around in smaller packets (<200B). IMIX for a typical residential ISP profile, end-to-end is around 800 bytes. So let's assume our packet is that big. 1 Gb/s gives us about 156,000 packets per second (800B each).
+
+https://www.youtube.com/watch?v=gDSbQvmEmLY
+내일할거
+스트리밍 만들기
+2 서버 부하 평균모델 구하기
+https://sustainablewebdesign.org/calculating-digital-emissions/
+
+
