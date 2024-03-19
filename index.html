@@ -1,16 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Streaming</title>
-	
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Streaming</title>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 </head>
-<body>
-	<div>
-    	<video id="videoPlayer" width="650" controls unmuted="" autoplay>
-        	<source src="/video" type="video/mp4" />
-    	</video>
+<body>\
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<!-- Or if you want the latest version from the main branch -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script> -->
+<video id="player" style="height: 600px;">
+  <source src="/video_2160" type="video/mp4" size="2160">
+  <source src="/video_1440" type="video/mp4" size="1440">
+  <source src="/video_1080" type="video/mp4" size="1080">
+  <source src="/video_720" type="video/mp4" size="720">
+  <source src="/video_360" type="video/mp4" size="360">
+</video>
+<script>
+  document.addEventListener('DOMContentLoaded', () => { 
+  // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
+  const player = new Plyr('#player');
+  
+  // Expose
+  window.player = player;
+
+  
+  // Bind event listener
+  function on(selector, type, callback) {
+    document.querySelector(selector).addEventListener(type, callback, false);
+  }
+
+
+  // Play
+  on('.js-play', 'click', () => { 
+    player.play();
+  });
+
+  // Pause
+  on('.js-pause', 'click', () => { 
+    player.pause();
+  });
+
+  // Stop
+  on('.js-stop', 'click', () => { 
+    player.stop();
+  });
+
+  // Rewind
+  on('.js-rewind', 'click', () => { 
+    player.rewind();
+  });
+
+  // Forward
+  on('.js-forward', 'click', () => { 
+    player.forward();
+  });
+});
+
+$(document).ready(() => {
+  
+   $('.player-src').on('click', function () {
+      
+      src = $(this).data("src");
+      type = 'video/' + $(this).data("type");
+      poster = $(this).data("poster")||"";
+ 
+      player.source = {
+        type: 'video',
+        title: 'Example title',
+        sources: [
+         {
+              src: src,
+              type: type,
+              size: 720
+          }
+        ],
+        poster: poster
+      };
+     
+     player.play();
+     
+   });
+})
+</script>
+
 </body>
 </html>

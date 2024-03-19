@@ -63,10 +63,35 @@ Hop counts calculated by others are mostly correct. A dozen or so is typical. No
 
 But how many "packets" in a gigabit? We have something called IMIX, which is nothing more than a real-life traffic profile. There is no single IMIX, because it depends on what applications the users of a particular ISP use the most. Video applications send a lot of packets at the MTU (1500 bytes path MTU for almost all Internet conversations), with a lot of GETs (HTTP) and ACKs (TCP) sprayed around in smaller packets (<200B). IMIX for a typical residential ISP profile, end-to-end is around 800 bytes. So let's assume our packet is that big. 1 Gb/s gives us about 156,000 packets per second (800B each).
 
+All together now. 15 W/hop * seconds/Gb * 12 hops * 1/156,000 Gb/packet = 1.2 mW-s/packet = 1.2 mJ/packet.
+
+
+필요한 데이터는 3가지. 이 3가지 숫자를 곱하면 계산할 수 있습니다. 우선 이 기사의 데이터 량을 계산하고, 데이터를 전송하는 데 소비되는 전기에너지의 평균치(Joshua Aslan, 2017)를 곱해주고, 소비 전력에 대비 배출되는 이산화탄소가 얼마인지 한전에서 제공해주는 전국 평균 수치를 곱해주면 끝입니다.
+
+일단 저 위의 부분까지의 데이터량을 살펴보면, 글자는 7,380Byte, 그림이 2,817,000Byte더라고요. 합치면 2,824,380Byte가 될 거고... 
+여기에 데이터 1Byte 전송에 소비되는 전기에너지 평균치 0.00000000006 Kwh/Byte를 곱해주고, 소비 전력 대비 배출되는 이산화탄소 수치 424gCO2/kwh을 곱해주면? 0.072gCO2! 즉 72mg의 이산화탄소가 발생했다는 걸 추정해 볼 수 있어요.
+출처 : SBS 뉴스 
+
 https://www.youtube.com/watch?v=gDSbQvmEmLY
 내일할거
 스트리밍 만들기
 2 서버 부하 평균모델 구하기
+
+
 https://sustainablewebdesign.org/calculating-digital-emissions/
+https://www.websitecarbon.com/how-does-it-work/
+https://www.reddit.com/r/askscience/comments/41sgzw/how_much_work_does_it_take_to_send_a_packet/
+https://applecoconut.tistory.com/entry/%EC%BB%B4%ED%93%A8%ED%84%B0-%EC%86%8C%EB%B9%84%EC%A0%84%EB%A0%A5-%EA%B3%84%EC%82%B0-%EB%B0%8F-%EC%A0%84%EA%B8%B0-%EC%9A%94%EA%B8%88-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0 
+https://www.youtube.com/watch?v=gDSbQvmEmLY
 
+https://www.aramis.admin.ch/Default?DocumentID=67656&Load=true
+Investigating the Inconsistencies Among the Energy and Energy Intensity Estimates of the Internet, Swiss Federal Office of Energy SFOE, June 2021.
+written by Vlad Coroamă, ETH Zürich
 
+https://onlinelibrary.wiley.com/doi/10.1111/jiec.12630
+Electricity Intensity of Internet Data Transmission: Untangling the Estimates(Joshua Aslan)
+
+https://news.sbs.co.kr/news/endPage.do?news_id=N1006696491
+[마부작침] 앨범 vs 스트리밍, 무엇이 더 친환경일까?(안혜민 기자)
+출처 : SBS 뉴스 
+원본 링크 : https://news.sbs.co.kr/news/endPage.do?news_id=N1006696491&plink=COPYPASTE&cooper=SBSNEWSEND
